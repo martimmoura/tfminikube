@@ -1,0 +1,26 @@
+# Rust
+target/
+**/*.rs.bk
+
+# Terraform
+.terraform/
+*.tfplan
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+
+# Minikube
+.minikube/
+
+# IDEs and OS
+.idea/
+.vscode/
+.DS_Store
+*.swp
+*~
+.env
+
+# Logs and temporary files
+*.log
+*.tmp
+tmp/
