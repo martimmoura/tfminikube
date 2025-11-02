@@ -1,48 +1,8 @@
-resource "aws_s3_bucket" "b" {
-  bucket = "mybucket"
-
-  tags = {
-    Name = "My bucket"
-  }
-}
-
-# See https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html
-data "aws_iam_policy_document" "origin_bucket_policy" {
-  statement {
-    sid    = "AllowCloudFrontServicePrincipalReadWrite"
-    effect = "Allow"
-
-    principals {
-      type        = "Service"
-      identifiers = ["cloudfront.amazonaws.com"]
-    }
-
-    actions = [
-      "s3:GetObject",
-      "s3:PutObject",
-    ]
-
-    resources = [
-      "${aws_s3_bucket.b.arn}/*",
-    ]
-
-    condition {
-      test     = "StringEquals"
-      variable = "AWS:SourceArn"
-      values   = [aws_cloudfront_distribution.s3_distribution.arn]
-    }
-  }
-}
-
 resource "aws_s3_bucket_policy" "b" {
   bucket = aws_s3_bucket.b.bucket
   policy = data.aws_iam_policy_document.origin_bucket_policy.json
 }
 
-locals {
-  s3_origin_id = "myS3Origin"
-  my_domain    = "mydomain.com"
-}
 
 data "aws_acm_certificate" "my_domain" {
   region   = "us-east-1"
@@ -61,7 +21,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
     domain_name              = aws_s3_bucket.b.bucket_regional_domain_name
     origin_access_control_id = aws_cloudfront_origin_access_control.default.id
-    origin_id                = local.s3_origin_id
+    origin_id                = 
   }
 
   enabled             = true
