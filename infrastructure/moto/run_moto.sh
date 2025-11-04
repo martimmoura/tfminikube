@@ -15,4 +15,4 @@ fi
 
 echo "Starting new Moto container."
 # Run Moto in a Docker container in proxy mode
-docker run -d -p 5000:5000 --name moto-proxy motoserver/moto
+docker run -d -p 5005:5005 --name moto-proxy local/motoproxy

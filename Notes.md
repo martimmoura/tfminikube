@@ -19,7 +19,7 @@ I want this thing to be portable for 1. Its good practice 2. I dont want to be e
 - Maybe minikube? I'll see if I can run minikube tool as container, since the node already is a container.
   - https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/
 
-```bash
+```
 
 """The socket solution
 
@@ -68,10 +68,13 @@ minikube version: v1.37.0
 
 straight binary
 
-minikube linux x86 https://github.com/kubernetes/minikube/releases/download/v1.37.0/minikube-linux-amd64
+minikube linux x86 
+
+https://github.com/kubernetes/minikube/releases/download/v1.37.0/minikube-linux-amd64.tar.gz
 
 tarball
 https://github.com/kubernetes/minikube/releases/download/v1.37.0/minikube-linux-amd64.tar.gz
+https://github.com/kubernetes/minikube/releases/download/v1.37.0/minikube-darwin-amd64.tar.gz
 
 ISO Checksums
 
@@ -86,7 +89,7 @@ Since there isn't an official minikube tool container image (or there is and its
 **pulling the right binary**
 To detect architecture:
 ```bash
-arch
+
 ```
 
 ## Ingress from AWS ALB to Istio
@@ -118,3 +121,10 @@ You can run moto_proxy –help to get the exact location of this certificate, de
 
 So if I want to run this thing as a container I need to get the CA bundle outside of the container. I can either ship the code with the CA bundle because I dont think it varies for a specific version (like I dont think its randomly seeded key creation) so it should be ok. And just have terraform use proxy localhost:5000 and aws ca bundle of moto. That should work.
 
+
+
+
+
+
+
+deadline nov 5 12:00 (zipped and shipped)

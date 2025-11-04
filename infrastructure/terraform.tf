@@ -1,11 +1,9 @@
 terraform {
-  # backend "s3" {
-  #   bucket="tf_state"
-  #   key="statefile"
-  #   region = "us-east-1"
-  #   profile = "moto"
-  # }
-  required_providers {
+
+    backend "local" {
+    }
+
+    required_providers {
     helm = {
       source  = "hashicorp/helm"
       version = "3.1.0"
@@ -13,6 +11,10 @@ terraform {
     aws={
       source = "hashicorp/aws"
       version = "~> 6.19"
+    }
+    docker = {
+      source = "kreuzwerker/docker"
+      version = "~> 3.0.1"
     }
   }
 }
