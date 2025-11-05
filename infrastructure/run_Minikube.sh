@@ -11,8 +11,5 @@ else
     echo "Minikube is already running."
 fi
 
-# Set kubectl context to Minikube
-kubectl config use-context minikube
-
-minikube addons enable istio-provisioner
-minikube addons enable istio
+# Set kubectl context to Minikube, we use shipped kubectl version
+minikube kubectl config use-context minikube

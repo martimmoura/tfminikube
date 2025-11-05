@@ -1,13 +1,14 @@
 #!/bin/bash
 
 ## Deployment Pipeline
-# This script is emulating a simple declarative pipeline definition using bash, 
-# that has its dificulties because its bash
+# This script is emulating a simple declarative pipeline definition using bash
+
+
+## Pipeline (script) setup
 
 # panic on err
 set -e
-
-# Get the directory of the script
+# Get the directory of the script, infra
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 INFRA_DIR="$SCRIPT_DIR/infrastructure"
 

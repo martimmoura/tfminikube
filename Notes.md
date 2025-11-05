@@ -118,3 +118,9 @@ You can run moto_proxy –help to get the exact location of this certificate, de
 
 So if I want to run this thing as a container I need to get the CA bundle outside of the container. I can either ship the code with the CA bundle because I dont think it varies for a specific version (like I dont think its randomly seeded key creation) so it should be ok. And just have terraform use proxy localhost:5000 and aws ca bundle of moto. That should work.
 
+I'll just fetch it from inside the container. Easier and mimics production more accurately.
+
+docker exec (Run a Command and Redirect)
+
+  You can execute a command inside the running container and redirect its output to a file on your host.
+  This is useful for getting the result of a specific command.
